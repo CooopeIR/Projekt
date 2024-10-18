@@ -1,3 +1,4 @@
+.gitignore
 .vs
-Postgres details
+Postgres details.txt
 .env
