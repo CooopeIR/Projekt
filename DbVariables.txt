@@ -1,0 +1,5 @@
+Instance name: servl-weathercams
+DB Username: postgres
+DB Name: weatherDB
+DB Password: S3Fqk5ioUig2tNyJz0k9
+DB Endpoint: servl-weathercams.caovvimatgxg.us-east-1.rds.amazonaws.com
