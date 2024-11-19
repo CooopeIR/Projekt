@@ -1,12 +1,20 @@
-const cities = ["Vienna", "Paris", "London", "New York", "Gerasdorf", "Tokyo"];
+async function fetchCities(query) {
+  try {
+    // Endpunkt mit dem Parameter "term" anstatt "query"
+    const response = await fetch(`https://6rlt9htd51.execute-api.us-east-1.amazonaws.com/autocomplete?term=${query}`);
+    const data = await response.json();
+    return data; // Die Lambda-Funktion gibt bereits ein Array zurÃ¼ck, daher kannst du es direkt verwenden
+  } catch (error) {
+    console.error("Error fetching cities:", error);
+    return [];
+  }
+}
 
-function autocomplete(input, arr) {
+function autocomplete(input) {
   let currentFocus;
 
-  input.addEventListener("input", function () {
-    let listContainer,
-      matchingItem,
-      val = this.value;
+  input.addEventListener("input", async function () {
+    let listContainer, matchingItem, val = this.value;
 
     // Close any already open lists of suggestions
     closeAllLists();
@@ -16,6 +24,9 @@ function autocomplete(input, arr) {
     }
     currentFocus = -1;
 
+    // Fetch cities from the Lambda function via API Gateway
+    const cities = await fetchCities(val);
+
     // Create a DIV element that will contain the suggestions
     listContainer = document.createElement("DIV");
     listContainer.setAttribute("id", this.id + "-autocomplete-list");
@@ -23,28 +34,24 @@ function autocomplete(input, arr) {
 
     this.parentNode.appendChild(listContainer);
 
-    // Loop through the array and match items
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        matchingItem = document.createElement("DIV");
+    // Loop through the fetched cities and match items
+    for (let i = 0; i < cities.length; i++) {
+      matchingItem = document.createElement("DIV");
 
-        // Make the matching letters bold
-        matchingItem.innerHTML =
-          "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-        matchingItem.innerHTML += arr[i].substr(val.length);
+      // Make the matching letters bold
+      matchingItem.innerHTML = "<strong>" + cities[i].substr(0, val.length) + "</strong>";
+      matchingItem.innerHTML += cities[i].substr(val.length);
 
-        // Insert a hidden input field to store the current value
-        matchingItem.innerHTML +=
-          "<input type='hidden' value='" + arr[i] + "'>";
+      // Insert a hidden input field to store the current value
+      matchingItem.innerHTML += "<input type='hidden' value='" + cities[i] + "'>";
 
-        // When someone clicks on the suggestion
-        matchingItem.addEventListener("click", function () {
-          input.value = this.getElementsByTagName("input")[0].value;
-          closeAllLists();
-        });
+      // When someone clicks on the suggestion
+      matchingItem.addEventListener("click", function () {
+        input.value = this.getElementsByTagName("input")[0].value;
+        closeAllLists();
+      });
 
-        listContainer.appendChild(matchingItem);
-      }
+      listContainer.appendChild(matchingItem);
     }
   });
 
@@ -98,4 +105,4 @@ function autocomplete(input, arr) {
 }
 
 // Initialize autocomplete on the search input
-autocomplete(document.getElementById("search-bar"), cities);
+autocomplete(document.getElementById("search-bar"));
