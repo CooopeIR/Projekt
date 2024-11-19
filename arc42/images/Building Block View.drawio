@@ -1,0 +1,39 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0" version="24.8.6">
+  <diagram name="Page-1" id="Hvg9xV0StBwEDFy6mn61">
+    <mxGraphModel dx="906" dy="462" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-6" value="" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="240" y="450" width="450" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-1" value="The Weather Archive" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="380" y="530" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="aVyZIBG3jG0OEG5a3Wch-2" target="aVyZIBG3jG0OEG5a3Wch-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-2" value="Weather Cams" style="verticalAlign=top;align=left;spacingTop=8;spacingLeft=2;spacingRight=12;shape=cube;size=10;direction=south;fontStyle=4;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="380" y="740" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-9" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="130" y="560" width="78" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-7" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.users;" vertex="1" parent="aVyZIBG3jG0OEG5a3Wch-9">
+          <mxGeometry width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-8" value="Users" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="aVyZIBG3jG0OEG5a3Wch-9">
+          <mxGeometry x="14" y="78" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aVyZIBG3jG0OEG5a3Wch-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="aVyZIBG3jG0OEG5a3Wch-7" target="aVyZIBG3jG0OEG5a3Wch-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="590" />
+              <mxPoint x="180" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
