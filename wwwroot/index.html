@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeusCams</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lato:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <h1 style="padding: 5px">Skibidi Cams</h1>
+
+            <div class="search-bar">
+                <input type="text" id="search-term" placeholder="Reumannplatz...">
+                
+                <button id="clear-btn" class="clear" type="button" style="display: none;">
+                    <img class="icon-white" src="https://cdn-icons-png.freepik.com/256/16083/16083479.png?semt=ais_hybrid" alt="Clear" />
+                </button>
+                <button id="search-btn" type="submit">
+                    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/342/342359.png" alt="Search">
+                </button>
+            </div>
+
+            <div class="date-time-picker">
+                <input type="date" placeholder="Select Date">
+                <input type="time" step="3600" placeholder="Select Time">
+            </div>
+  
+        </div>
+
+        <div class="city-list add">
+            <!-- <div class="city-item add" style="display: none;">
+                <div id="expandable-form" class="expandable">
+                    <form id="my-form" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title">
+                        </div>
+                        <div class="form-row">
+                            <label for="author">Author</label>
+                            <input type="name" id="author" name="author">
+                        </div>
+
+                        <div style="display:flex; flex-direction:column;">
+                            <input type="file" id="fileupload" name="fileupload" hidden />
+                            <button  type="button" id="upload-btn">Upload File</button>
+                            <p id="file-name" class="file-name"></p>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <button id="expand-btn" data-target="expandable-form">Add city</button>
+            </div> -->
+
+            <div id="error-message" class="city-item error">
+                <span class="error-message">An Error occurred!</span>
+            </div>
+            
+            <div id="success-message" class="city-item success">
+                <span class="error-message">Success!</span>
+            </div>
+            
+        </div>
+        
+        <div class="city-list scrollable">
+            <div id="city-list">
+
+            </div>
+        </div>
+
+    </div>
+
+<script src="/app.js"></script>
+</body>
+</html>
