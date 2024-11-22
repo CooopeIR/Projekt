@@ -285,7 +285,7 @@ Specifies the internal structure of *building block x.1*.
 # Runtime View {#section-runtime-view}
 
 
-## \Runtime Scenario 1: Real-Time Weather Data Processing {#__runtime_scenario_1}
+## Runtime Scenario 1: Real-Time Weather Data Processing {#__runtime_scenario_1}
 
 <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview1.png" width="400">
 
@@ -297,7 +297,7 @@ Preprocessed data is sent to the Data Storage Module.
 The Data Analysis Engine fetches new data and updates insights.
 External systems request insights via the API Gateway.
 
-## \Runtime Scenario 2: Data Retrieval for Historical Analysis {#__runtime_scenario_2}
+## Runtime Scenario 2: Data Retrieval for Historical Analysis {#__runtime_scenario_2}
 
 <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview2.png" width="400">
 
@@ -310,7 +310,7 @@ Description:
 
 3. The requested data is formatted and sent to the external system.
 
-## \Runtime Scenario 3: Predictive Analysis Execution {#__runtime_scenario_3}
+## Runtime Scenario 3: Predictive Analysis Execution {#__runtime_scenario_3}
 
 <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview3.png" width="400">
 
@@ -335,7 +335,7 @@ Description:
 
 ## Infrastructure Level 1 {#_infrastructure_level_1}
 
-<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Deploymentview1.png" width="400">
+<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Depolymentview1.png" width="400">
 
 | Node / Artifact | Description |
 |----------|----------|
@@ -350,11 +350,12 @@ Description:
 
 
 
-Motivation:
+# Motivation:
 
 This deployment ensures scalability and minimizes downtime by leveraging AWS’s multi-AZ architecture. It also optimizes costs by using serverless technologies where applicable.
 
-Quality and/or Performance Features:
+
+# Quality and/or Performance Features:
 
 High availability through multi-AZ deployments.
 
@@ -362,7 +363,10 @@ Low latency access to data via distributed caching.
 
 Auto-scaling for Lambda functions to handle variable workloads.
 
-Mapping of Building Blocks to Infrastructure:
+
+
+
+# Mapping of Building Blocks to Infrastructure:
 
 API Gateway: Entry point for all requests.
 
@@ -377,6 +381,7 @@ Redis Cache: Cache frequently accessed data.
 Image Resizer Service: Resizes images to reduce storage costs and improve performance.
 
 Video Generator Service: Generates video from images stored in
+
 
 # Cross-cutting Concepts {#section-concepts}
 
