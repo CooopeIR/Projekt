@@ -339,20 +339,8 @@ documentation.
 
 ## \Runtime Scenario 1: Real-Time Weather Data Processing {#__runtime_scenario_1}
 
-@startuml
-actor Sensor
-participant IngestionService
-participant StorageModule
-participant AnalysisEngine
-participant ExternalSystem
+<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview1.png" width="400">
 
-Sensor -> IngestionService: Send raw data
-IngestionService -> StorageModule: Store preprocessed data
-AnalysisEngine -> StorageModule: Fetch new data
-AnalysisEngine -> StorageModule: Store insights
-ExternalSystem -> StorageModule: Request insights
-StorageModule -> ExternalSystem: Send insights
-@enduml
 
 Description:
 
@@ -363,16 +351,8 @@ External systems request insights via the API Gateway.
 
 ## \Runtime Scenario 2: Data Retrieval for Historical Analysis {#__runtime_scenario_2}
 
-@startuml
-actor User
-participant APIGateway
-participant StorageModule
+<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview2.png" width="400">
 
-User -> APIGateway: Request historical weather data
-APIGateway -> StorageModule: Query data
-StorageModule -> APIGateway: Return historical data
-APIGateway -> User: Send data response
-@enduml
 
 Description:
 
@@ -384,18 +364,8 @@ Description:
 
 ## \Runtime Scenario 3: Predictive Analysis Execution {#__runtime_scenario_3}
 
-@startuml
-participant AnalysisEngine
-participant StorageModule
-participant APIGateway
-actor User
+<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview3.png" width="400">
 
-AnalysisEngine -> StorageModule: Fetch data for predictions
-AnalysisEngine -> StorageModule: Store predictive results
-User -> APIGateway: Request predictions
-APIGateway -> StorageModule: Retrieve predictions
-APIGateway -> User: Return predictions
-@enduml
 
 Description:
 1. The Data Analysis Engine triggers predictive models based on new data.
