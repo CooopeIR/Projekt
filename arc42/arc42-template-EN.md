@@ -337,18 +337,72 @@ There are many notations for describing scenarios, e.g.
 See [Runtime View](https://docs.arc42.org/section-6/) in the arc42
 documentation.
 
-## \<Runtime Scenario 1> {#__runtime_scenario_1}
+## \Runtime Scenario 1: Real-Time Weather Data Processing {#__runtime_scenario_1}
 
--   *\<insert runtime diagram or textual description of the scenario>*
+@startuml
+actor Sensor
+participant IngestionService
+participant StorageModule
+participant AnalysisEngine
+participant ExternalSystem
 
--   *\<insert description of the notable aspects of the interactions
-    between the building block instances depicted in this diagram.\>*
+Sensor -> IngestionService: Send raw data
+IngestionService -> StorageModule: Store preprocessed data
+AnalysisEngine -> StorageModule: Fetch new data
+AnalysisEngine -> StorageModule: Store insights
+ExternalSystem -> StorageModule: Request insights
+StorageModule -> ExternalSystem: Send insights
+@enduml
 
-## \<Runtime Scenario 2> {#__runtime_scenario_2}
+Description:
 
-## ... {#_}
+The Data Ingestion Service collects data from sensors and external APIs.
+Preprocessed data is sent to the Data Storage Module.
+The Data Analysis Engine fetches new data and updates insights.
+External systems request insights via the API Gateway.
 
-## \<Runtime Scenario n> {#__runtime_scenario_n}
+## \Runtime Scenario 2: Data Retrieval for Historical Analysis {#__runtime_scenario_2}
+
+@startuml
+actor User
+participant APIGateway
+participant StorageModule
+
+User -> APIGateway: Request historical weather data
+APIGateway -> StorageModule: Query data
+StorageModule -> APIGateway: Return historical data
+APIGateway -> User: Send data response
+@enduml
+
+Description:
+
+1. External systems request historical weather data via the API Gateway.
+
+2. The API Gateway queries the Data Storage Module for relevant data.
+
+3. The requested data is formatted and sent to the external system.
+
+## \Runtime Scenario 3: Predictive Analysis Execution {#__runtime_scenario_3}
+
+@startuml
+participant AnalysisEngine
+participant StorageModule
+participant APIGateway
+actor User
+
+AnalysisEngine -> StorageModule: Fetch data for predictions
+AnalysisEngine -> StorageModule: Store predictive results
+User -> APIGateway: Request predictions
+APIGateway -> StorageModule: Retrieve predictions
+APIGateway -> User: Return predictions
+@enduml
+
+Description:
+1. The Data Analysis Engine triggers predictive models based on new data.
+
+2. Results are stored in the Data Storage Module.
+
+3. The API Gateway provides the predictions to external systems upon reques
 
 # Deployment View {#section-deployment-view}
 
