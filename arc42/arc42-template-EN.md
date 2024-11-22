@@ -350,12 +350,12 @@ Description:
 
 
 
-# Motivation:
+### Motivation:
 
 This deployment ensures scalability and minimizes downtime by leveraging AWS’s multi-AZ architecture. It also optimizes costs by using serverless technologies where applicable.
 
 
-# Quality and/or Performance Features:
+### Quality and/or Performance Features:
 
 High availability through multi-AZ deployments.
 
@@ -366,7 +366,7 @@ Auto-scaling for Lambda functions to handle variable workloads.
 
 
 
-# Mapping of Building Blocks to Infrastructure:
+### Mapping of Building Blocks to Infrastructure:
 
 API Gateway: Entry point for all requests.
 
