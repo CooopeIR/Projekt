@@ -460,45 +460,117 @@ A UX-focused concept ensuring compatibility across a variety of devices and scre
 
 # Architecture Decisions {#section-design-decisions}
 
-::: formalpara-title
-**Contents**
-:::
+## Serverless Architecture for Compute-Intensive Tasks {#_serverless_architecture}
 
-Important, expensive, large scale or risky architecture decisions
-including rationales. With \"decisions\" we mean selecting one
-alternative based on given criteria.
+**Objective:** Optimize compute tasks for scalability, cost-efficiency, and fault tolerance.
 
-Please use your judgement to decide whether an architectural decision
-should be documented here in this central section or whether you better
-document it locally (e.g. within the white box template of one building
-block).
+**Decisions:**
 
-Avoid redundancy. Refer to section 4, where you already captured the
-most important decisions of your architecture.
+- Adopt AWS Lambda for handling compute-intensive tasks in a stateless manner.
 
-::: formalpara-title
-**Motivation**
-:::
+- Leverage serverless architecture to minimize idle costs and simplify scaling.
 
-Stakeholders of your system should be able to comprehend and retrace
-your decisions.
+- Implement cloud-based event triggers to orchestrate workflows across services.
 
-::: formalpara-title
-**Form**
-:::
+**Advantages:**
 
-Various options:
+- Reduced infrastructure management due to AWS-managed resources.
 
--   ADR ([Documenting Architecture
-    Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions))
-    for every important decision
+- Automatic scaling to handle variable workloads without manual intervention.
 
--   List or table, ordered by importance and consequences or:
+- Cost-effective for intermittent compute tasks.
 
--   more detailed in form of separate sections per decision
+**Disadvantages:**
 
-See [Architecture Decisions](https://docs.arc42.org/section-9/) in the
-arc42 documentation. There you will find links and examples about ADR.
+- Cold start latencies might impact performance for critical tasks.
+
+- Limited control over underlying infrastructure.
+
+**Status:** Approved
+
+**Consequence:** Requires careful management of state through external storage solutions such as S3 and DynamoDB.
+
+## Cloud Platform: AWS {#_aws_cloud}
+
+**Objective:** Ensure a scalable, reliable, and globally distributed platform for the application.
+
+**Decisions:**
+
+- Deploy the system using AWS services including S3, RDS, Lambda, and API Gateway.
+
+- Utilize multi-region deployments for critical services to enhance availability.
+
+**Advantages:**
+
+- Broad range of integrated services simplifies implementation.
+
+- Proven reliability and scalability of AWS infrastructure.
+
+- Access to global data centers ensures low latency for users worldwide.
+
+**Disadvantages:**
+
+- Vendor lock-in due to heavy reliance on AWS-specific services.
+
+- Requires expertise in AWS tooling for efficient operation.
+
+**Status:** Approved
+
+**Consequence:** Development and operations must account for AWS-specific limitations and opportunities, such as egress costs and service quotas.
+
+## API Gateway for Communication {#_api_gateway}
+
+**Objective:** Centralize external communication to simplify request routing and improve security.
+
+**Decisions:**
+
+- Use AWS API Gateway as the entry point for all API interactions.
+
+- Integrate authentication mechanisms directly into the API Gateway.
+
+**Advantages:**
+
+- Unified interface for managing all API requests.
+
+- Built-in support for rate limiting, monitoring, and security policies.
+
+**Disadvantages:**
+
+- Adds slight latency overhead due to request processing layers.
+
+- Potentially complex configuration for managing diverse endpoints.
+
+**Status:** Approved
+
+**Consequence:** Efficient handling of high request volumes, but requires robust backend integration to ensure consistent performance.
+
+## Data Privacy Measures {#_data_privacy_measures}
+
+**Objective:** Ensure compliance with GDPR and other privacy regulations while maintaining data security.
+
+**Decisions:**
+
+- Blur sensitive information (e.g., faces, license plates) in webcam images before storage.
+
+- Encrypt all sensitive data in transit and at rest.
+
+- Use token-based authentication and API keys for secure access.
+
+**Advantages:**
+
+- Protects sensitive user data from unauthorized access or breaches.
+
+- Ensures compliance with legal requirements for data privacy.
+
+**Disadvantages:**
+
+- Increases processing overhead for data anonymization.
+
+- Requires robust key management for encrypted data.
+
+**Status:** In Progress
+
+**Consequence:** Additional computational overhead, but mitigates risks of non-compliance and enhances user trust.
 
 # Quality Requirements {#section-quality-scenarios}
 
