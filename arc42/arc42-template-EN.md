@@ -385,95 +385,78 @@ Video Generator Service: Generates video from images stored in
 
 # Cross-cutting Concepts {#section-concepts}
 
-::: formalpara-title
-**Content**
-:::
+## Continuous Integration (CI) {#_ci}
 
-This section describes overall, principal regulations and solution ideas
-that are relevant in multiple parts (= cross-cutting) of your system.
-Such concepts are often related to multiple building blocks. They can
-include many different topics, such as
+A development concept that cuts across various stages of the software development lifecycle.
 
--   models, especially domain models
+- Frequent integration of code changes into a shared repository, where automated build and testing processes are triggered.
 
--   architecture or design patterns
+- Ensures that changes made by different developers do not conflict and helps identify and resolve integration issues early in the development process.
 
--   rules for using specific technology
+- CI promotes collaboration, reduces integration problems, and contributes to the overall stability of the application.
 
--   principal, often technical decisions of an overarching (=
-    cross-cutting) nature
+## Aspect-Oriented Programming (AOP) {#_aop}
 
--   implementation rules
+Addresses concerns, such as logging or security, which often span multiple modules or layers.
 
-::: formalpara-title
-**Motivation**
-:::
+- Allows developers to modularize and encapsulate these cross-cutting concerns separately from the primary business logic.
 
-Concepts form the basis for *conceptual integrity* (consistency,
-homogeneity) of the architecture. Thus, they are an important
-contribution to achieve inner qualities of your system.
+- Promotes cleaner and more maintainable architecture.
 
-Some of these concepts cannot be assigned to individual building blocks,
-e.g. security or safety.
+## Role-Based Access Control (RBAC) {#_rbac}
 
-::: formalpara-title
-**Form**
-:::
+Managing access permissions based on roles assigned to users within a system.
 
-The form can be varied:
+- Cuts across different modules and functionalities, ensuring that users only have access to the resources and actions relevant to their roles.
 
--   concept papers with any kind of structure
+- Enhances security by restricting unauthorized access and helps maintain a clear and scalable security model.
 
--   cross-cutting model excerpts or scenarios using notations of the
-    architecture views
+- Influences the design and implementation of security measures throughout the entire application, impacting various components and user interactions.
 
--   sample implementations, especially for technical concepts
+## Event-Driven Architecture {#_event_driven}
 
--   reference to typical usage of standard frameworks (e.g. using
-    Hibernate for object/relational mapping)
+An architecture pattern promoting loose coupling and asynchronous processing.
 
-::: formalpara-title
-**Structure**
-:::
+- Used to decouple components and enable them to communicate via events.
 
-A potential (but not mandatory) structure for this section could be:
+- Improves scalability by allowing independent scaling of services.
 
--   Domain concepts
+- Supports fault tolerance through retries and compensating actions for failed processes.
 
--   User Experience concepts (UX)
+## Monitoring and Logging {#_monitoring_logging}
 
--   Safety and security concepts
+Ensures operational stability and simplifies debugging across the system.
 
--   Architecture and design patterns
+- Implements tools like AWS CloudWatch for tracking API response times, system uptime, and resource utilization.
 
--   \"Under-the-hood\"
+- Centralized logging provides a single source of truth for troubleshooting and audit trails.
 
--   development concepts
+## Data Privacy and Security {#_data_privacy}
 
--   operational concepts
+Cross-cutting concerns affecting data handling and compliance.
 
-Note: it might be difficult to assign individual concepts to one
-specific topic on this list.
+- Implements GDPR-compliant measures, such as blurring sensitive information (e.g., faces, license plates) in images.
 
-![Possible topics for crosscutting
-concepts](images/08-concepts-EN.drawio.png)
+- Encrypts sensitive data in transit and at rest, such as data stored in the S3 Bucket and RDS Database.
 
-See [Concepts](https://docs.arc42.org/section-8/) in the arc42
-documentation.
+- Enforces API keys and token-based authentication for secure system access.
 
-## *\<Concept 1>* {#__emphasis_concept_1_emphasis}
+## Disaster Recovery {#_disaster_recovery}
+Ensures business continuity and minimizes downtime during critical failures.
 
-*\<explanation>*
+- Defines automated backup policies for databases and storage systems.
 
-## *\<Concept 2>* {#__emphasis_concept_2_emphasis}
+- Includes processes to restore services within agreed Recovery Time Objectives (RTO).
 
-*\<explanation>*
+- Implements multi-region replication for critical data to mitigate regional outages.
 
-...
+## Responsive Design {#_responsive_design}
 
-## *\<Concept n>* {#__emphasis_concept_n_emphasis}
+A UX-focused concept ensuring compatibility across a variety of devices and screen sizes.
 
-*\<explanation>*
+- Implements flexible layouts and adaptive components.
+
+- Ensures the application remains functional and visually appealing across desktops, tablets, and mobile devices.
 
 # Architecture Decisions {#section-design-decisions}
 
