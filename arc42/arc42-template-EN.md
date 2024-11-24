@@ -629,110 +629,68 @@ following section.
 
 ## Quality Scenarios {#_quality_scenarios}
 
-::: formalpara-title
-**Contents**
-:::
+<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Qualityrequirement1.png" width="600">
 
-Concretization of (sometimes vague or implicit) quality requirements
-using (quality) scenarios.
+# Quality Scenarios and Risks
 
-These scenarios describe what should happen when a stimulus arrives at
-the system.
+### Data Security and Privacy {#data-security-and-privacy}
 
-For architects, two kinds of scenarios are important:
+| Goal            | Scenario                                           | Source              | Stimulus                        | Response                                                   |
+|-----------------|---------------------------------------------------|---------------------|---------------------------------|------------------------------------------------------------|
+| Confidentiality | Only authorized users can view sensitive data.    | Security Assessment | Unauthorized access attempt     | Deny access, log the incident, and alert the admin team.   |
+| Integrity       | Prevent tampering with metadata or processed data.| Compliance Audit    | Detect metadata discrepancy     | Log changes, validate the database, and initiate recovery. |
+| Authenticity    | Enforce multi-factor authentication for logins.   | Security Requirements | Unauthorized login attempt     | Block access and prompt the user for verification.         |
 
--   Usage scenarios (also called application scenarios or use case
-    scenarios) describe the system's runtime reaction to a certain
-    stimulus. This also includes scenarios that describe the system's
-    efficiency or performance. Example: The system reacts to a user's
-    request within one second.
+### Usability {#usability}
 
--   Change scenarios describe a modification of the system or of its
-    immediate environment. Example: Additional functionality is
-    implemented or requirements for a quality attribute change.
+| Goal            | Scenario                                              | Source              | Stimulus                         | Response                                                   |
+|-----------------|------------------------------------------------------|---------------------|----------------------------------|------------------------------------------------------------|
+| Operability     | New users access weather data intuitively.            | User Feedback       | User reports onboarding issues   | Refine interface design for easier navigation.             |
+| Accessibility   | Visually impaired users navigate the application.     | Accessibility Testing | Screen reader compatibility issues | Update UI to meet WCAG compliance standards.               |
+| Error Prevention| Prevent user errors during form submissions.          | User Analytics      | User enters invalid data         | Display validation messages and prevent form submission.   |
 
-::: formalpara-title
-**Motivation**
-:::
+### Reliability {#reliability}
 
-Scenarios make quality requirements concrete and allow to more easily
-measure or decide whether they are fulfilled.
+| Goal            | Scenario                                              | Source              | Stimulus                         | Response                                                   |
+|-----------------|------------------------------------------------------|---------------------|----------------------------------|------------------------------------------------------------|
+| Availability    | System handles peak traffic efficiently.              | Performance Monitoring | API traffic spike              | Scale serverless functions automatically to handle demand. |
+| Fault Tolerance | System reroutes traffic during server failures.       | System Health Checks | Server failure detected         | Redirect traffic to backup regions and log the incident.   |
+| Recoverability  | Restore operations after an outage while preserving data integrity. | Disaster Recovery Testing | Simulated outage             | Execute recovery processes and validate data integrity.    |
 
-Especially when you want to assess your architecture using methods like
-ATAM you need to describe your quality goals (from section 1.2) more
-precisely down to a level of scenarios that can be discussed and
-evaluated.
+### Performance {#performance}
 
-::: formalpara-title
-**Form**
-:::
+| Goal            | Scenario                                              | Source              | Stimulus                         | Response                                                   |
+|-----------------|------------------------------------------------------|---------------------|----------------------------------|------------------------------------------------------------|
+| Response Time   | System responds to user requests within 2 seconds.   | Performance Testing | High volume of concurrent requests | Optimize database queries and cache frequently accessed data. |
+| Scalability     | Application scales seamlessly during traffic spikes. | Load Testing        | Sudden increase in API traffic   | Automatically provision additional resources using AWS auto-scaling. |
+| Throughput      | Handle 1,000+ requests per second during peak hours. | System Benchmarking | Simulated high-load scenario      | Implement efficient load balancing and optimize backend services. |
 
-Tabular or free form text.
+---
 
 # Risks and Technical Debts {#section-technical-risks}
 
-::: formalpara-title
-**Contents**
-:::
+| Risk                                   | Impact              | Mitigation Strategy                                                  |
+|---------------------------------------|---------------------|----------------------------------------------------------------------|
+| Vendor lock-in with AWS                | Medium              | Abstract core components to reduce dependency on AWS-specific tools. |
+| Cold starts in serverless architecture | High                | Pre-warm critical Lambda functions and optimize their dependencies.  |
+| Data consistency in distributed caches | High                | Implement robust cache invalidation and fallback mechanisms.         |
+| Downtime due to regional AWS outages   | Medium              | Use multi-region replication for critical services.                  |
+| Privacy non-compliance                 | High                | Automate GDPR compliance checks and enforce security policies.       |
 
-A list of identified technical risks or technical debts, ordered by
-priority
-
-::: formalpara-title
-**Motivation**
-:::
-
-"Risk management is project management for grown-ups" (Tim Lister,
-Atlantic Systems Guild.)
-
-This should be your motto for systematic detection and evaluation of
-risks and technical debts in the architecture, which will be needed by
-management stakeholders (e.g. project managers, product owners) as part
-of the overall risk analysis and measurement planning.
-
-::: formalpara-title
-**Form**
-:::
-
-List of risks and/or technical debts, probably including suggested
-measures to minimize, mitigate or avoid risks or reduce technical debts.
-
-See [Risks and Technical Debt](https://docs.arc42.org/section-11/) in
-the arc42 documentation.
+---
 
 # Glossary {#section-glossary}
 
-::: formalpara-title
-**Contents**
-:::
+| Term                   | Definition                                                                                                            |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------|
+| API Gateway            | A service that acts as the entry point for API requests, managing routing, security, and rate limiting.               |
+| Lambda                 | A serverless compute service that runs code in response to events and automatically manages the underlying resources. |
+| S3                     | Amazon Simple Storage Service used for storing and retrieving large amounts of data.                                  |
+| RDS                    | Relational Database Service, a managed database solution provided by AWS.                                             |
+| Redis                  | An in-memory data structure store used as a distributed cache for reducing latency.                                   |
+| GDPR                   | General Data Protection Regulation, a legal framework for data protection and privacy in the EU.                      |
+| Disaster Recovery Plan | A strategy to restore critical systems and data in the event of a failure or outage.                                  |
+| CI/CD                  | Continuous Integration and Continuous Delivery, processes for automating software build, test, and deployment.        |
 
-The most important domain and technical terms that your stakeholders use
-when discussing the system.
+---
 
-You can also see the glossary as source for translations if you work in
-multi-language teams.
-
-::: formalpara-title
-**Motivation**
-:::
-
-You should clearly define your terms, so that all stakeholders
-
--   have an identical understanding of these terms
-
--   do not use synonyms and homonyms
-
-A table with columns \<Term> and \<Definition>.
-
-Potentially more columns in case you need translations.
-
-See [Glossary](https://docs.arc42.org/section-12/) in the arc42
-documentation.
-
-+-----------------------+-----------------------------------------------+
-| Term                  | Definition                                    |
-+=======================+===============================================+
-| *\<Term-1>*           | *\<definition-1>*                             |
-+-----------------------+-----------------------------------------------+
-| *\<Term-2>*           | *\<definition-2>*                             |
-+-----------------------+-----------------------------------------------+
