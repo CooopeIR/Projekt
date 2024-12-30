@@ -154,9 +154,6 @@ name and responsibility according to the following schema:
 
 
 
-
-
-
 -   black box descriptions of the contained building blocks. For these
     we offer you alternatives:
 
