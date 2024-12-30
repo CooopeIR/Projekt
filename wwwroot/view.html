@@ -8,26 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lato:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
+
 <body>
     <div class="content">
         <div class="container">
-            <h1 style="padding: 5px">Skibidi Cams</h1>
+            <h1 id="city-name" style="padding: 5px"></h1>
 
-            <div class="search-bar">
-                <input type="text" id="search-term" placeholder="Reumannplatz...">
-                <button id="clear-btn" class="clear" type="button" style="display: none;">
-                    <img class="icon-white" src="https://cdn-icons-png.freepik.com/256/16083/16083479.png?semt=ais_hybrid" alt="Clear" />
-                </button>
-                <button id="search-btn" type="submit">
-                    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/342/342359.png" alt="Search">
-                </button>
-            </div>
-
-            <!-- <div class="date-time-picker">
+            <div class="date-time-picker">
                 <input type="date" placeholder="Select Date">
-                <input type="time" step="3600" placeholder="Select Time">
-            </div> -->
+                <input type="range" id="hour-slider" min="0" max="23" step="1" style="width: 300px;" value="0">
+                <span id="selected-hour">0</span>      
+                <div>
+                    <button style="width: 100px;" class="delete"  id="back-btn">Back</button>
+                    <button style="width: 100px;" class="view" id="search-btn" type="submit">Search</button>     
+                </div>
+            </div>
+            
         </div>
 
         <div class="city-list add">
@@ -38,17 +37,16 @@
             <div id="success-message" class="city-item success" style="display: none;">
                 <span class="error-message"></span>
             </div>
-            
         </div>
         
-        <div class="city-list scrollable">
+        <!-- <div class="city-list scrollable">
             <div id="city-list">
 
             </div>
-        </div>
+        </div> -->
 
     </div>
 
-<script src="/app.js"></script>
+<script src="/view.js"></script>
 </body>
 </html>

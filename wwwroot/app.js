@@ -1,6 +1,5 @@
 ﻿const apiUrl = 'https://6rlt9htd51.execute-api.us-east-1.amazonaws.com';
 
-
 // Function to show a message for 5 seconds
 function showMessage(message, isSuccess) {
     // Expand/collapse form logic remains the same
@@ -17,7 +16,7 @@ function showMessage(message, isSuccess) {
     }, 5000);
 }
 
-async function fetchCities(query) {
+async function fetchVideo(query) {
         console.log('Fetching documents...');
         fetchUrl = apiUrl + '/autocomplete';
         if (query) {
@@ -54,10 +53,7 @@ async function fetchCities(query) {
                         li.innerHTML = `
                     <span class="city-name">${cityFromResponse.city}</span>
                     <div class="button-group">
-                        <button class="view" onclick="viewCity(${cityFromResponse.id})">view</button>    
-                        <button class="delete" onclick="deleteTask(${cityFromResponse.id})">
-                                <span class="material-icons">delete</span>
-                        </button>
+                        <button class="view" onclick="viewCity('${cityFromResponse.city}', ${cityFromResponse.id})">view</button>    
                     </div>
                 `;
                         cityList.appendChild(li);
@@ -82,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (query.length === 0)
             showMessage("Search Term cannot be empty!", false);
         else {
-            fetchCities(query);
+            fetchVideo(query);
             clearBtn.style.display = "block";
             setTimeout(() => {
                 clearBtn.classList.add("show"); // Add the class to trigger sliding effect
@@ -93,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
     clearBtn.addEventListener("click", () => {
         // Clear the input field
         searchTerm.value = "";
-        fetchCities('');
+        fetchVideo('');
         // Hide the clear button with sliding effect
         clearBtn.classList.remove("show");
         setTimeout(() => {
@@ -102,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', fetchCities(''));
+document.addEventListener('DOMContentLoaded', fetchVideo(''));
 
 function deleteTask(id) {
     fetch(`${apiUrl}/${id}`, {
@@ -118,20 +114,6 @@ function deleteTask(id) {
         .catch(error => console.error('Fehler:', error));
 }
 
-function viewCity(id) {
-    fetch(`${apiUrl}/${id}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            if (response.ok) {
-                fetchCitites(); // Refresh the list after deletion
-                return response.json(); // Return the parsed JSON
-            } else {
-                console.error('Fehler beim Holen der Dokument Daten.');
-            }
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => console.error('Fehler:', error));
+function viewCity(city, id) {
+    window.location.href = `/view.html?city=${encodeURIComponent(city)}&id=${encodeURIComponent(id)}`;
 }

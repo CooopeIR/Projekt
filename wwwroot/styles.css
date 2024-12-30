@@ -16,6 +16,8 @@ body, html {
     height: 100%; /* Ensures full viewport height */
     margin: 0px;
     padding: 0px;
+    font-size: 18px; /* Adjust the base font size */
+    line-height: 1.6; /* Adjust line spacing for readability */
 }
 
 body {
@@ -29,6 +31,24 @@ body {
     font-family: "Lato", sans-serif; /* Paragraph font */
     color: var(--text-color); /* Dark text for readability */
     padding-top: 15px;
+}
+
+/* Optional: You can also adjust heading sizes if needed */
+h1 {
+    font-size: 2.5em; /* Increase size of H1 */
+}
+
+h2 {
+    font-size: 2em; /* Increase size of H2 */
+}
+
+h3 {
+    font-size: 1.75em; /* Increase size of H3 */
+}
+
+/* Optional: Adjust smaller text like paragraphs or captions */
+p {
+    font-size: 1.125em; /* Increase size of paragraph text */
 }
 
 .content {
@@ -129,7 +149,8 @@ img.icon-white {
 }
 
 button {
-    padding: 5px 10px; /* Padding for buttons */
+    font-size: 18px; /* Set the font size larger */
+    padding: 10px 20px; /* Padding for buttons */
     background-color: var(--primary-color); /* Button color */
     border: none; /* Remove default border */
     border-radius: 20px; /* Rounded corners for buttons */
@@ -176,7 +197,60 @@ button.delete:hover {
     align-items: center;
     margin-top: 10px; /* Add some space above the search bar */
     max-width: 300px;
+}
 
+/* Style for the search-bar container */
+.time-slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--primary-color); /* Primary color for background */
+    border-radius: 15px; /* Rounded borders */
+    padding: 10px;
+}
+
+/* Style for the slider input */
+#hour-slider {
+    -webkit-appearance: none; /* Remove default appearance */
+    width: 100%; /* Make the slider take full width */
+    height: 10px; /* Set the height of the slider */
+    background: white; /* White background for the slider */
+    border-radius: 15px; /* Rounded borders for the slider */
+    outline: none; /* Remove outline */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+/* Style for the slider thumb (circle) */
+#hour-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default thumb appearance */
+    appearance: none;
+    width: 20px; /* Set thumb size */
+    height: 20px;
+    background-color: var(--secondary-color); /* Set thumb color to secondary color */
+    border-radius: 50%; /* Make the thumb circular */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Hover effect for the slider thumb */
+#hour-slider::-webkit-slider-thumb:hover {
+    background-color: var(--secondary-color); /* Maintain thumb color on hover */
+}
+
+/* Text style for selected hour */
+#selected-hour {
+    font-weight: bold; /* Make the text bold */
+    color: white; /* Set text color to white */
+    background-color: var(--primary-color); /* Set background color to primary color */
+    padding: 5px 10px; /* Add padding for some spacing */
+    border-radius: 15px; /* Rounded corners */
+}
+
+/* Styling for input[type="date"] */
+input[type="date"] {
+    padding: 5px 10px;
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid var(--primary-color); /* Border color set to primary color */
+    background-color: white;
 }
 
 .search-bar input {
@@ -223,15 +297,23 @@ button.delete:hover {
     height: 20px; /* Ensure the image fits inside the button */
 }
 
+
+
 .date-time-picker {
+    padding: 10px;
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    width: 35vw ;
+    min-width: 350px;
+    max-width: 500px;
+    justify-items: center;
+    align-items: center;
   }
 
   .date-time-picker input {
     padding: 10px;
-    margin: 0 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
