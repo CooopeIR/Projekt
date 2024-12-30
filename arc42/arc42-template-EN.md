@@ -287,8 +287,10 @@ Specifies the internal structure of *building block x.1*.
 
 ## Runtime Scenario 1: Real-Time Weather Data Processing {#__runtime_scenario_1}
 
-<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview1.png" width="600">
+<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview1.png" width="600"> --> 
+<!-- Das wurde bei mir mit GuitHub Link nicht angezeigt irgendwie> -->
 
+![Runtime View 1](images/runtimeview1.png)
 
 Description:
 
@@ -299,7 +301,9 @@ External systems request insights via the API Gateway.
 
 ## Runtime Scenario 2: Data Retrieval for Historical Analysis {#__runtime_scenario_2}
 
-<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview2.png" width="600">
+<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview2.png" width="600"> -->
+
+![Runtime View 2](images/runtimeview2.png)
 
 
 Description:
@@ -312,7 +316,8 @@ Description:
 
 ## Runtime Scenario 3: Predictive Analysis Execution {#__runtime_scenario_3}
 
-<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview3.png" width="600">
+<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview3.png" width="600"> -->
+![Runtime View 3](images/runtimeview3.png)
 
 
 Description:
@@ -335,7 +340,10 @@ Description:
 
 ## Infrastructure Level 1 {#_infrastructure_level_1}
 
-<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Depolymentview1.png" width="800">
+<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Depolymentview1.png" width="800"> -->
+
+![Deployment View](images/Depolymentview1.png)
+
 
 | Node / Artifact | Description |
 |----------|----------|
@@ -629,7 +637,10 @@ following section.
 
 ## Quality Scenarios {#_quality_scenarios}
 
-<img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Qualityrequirement1.png" width="600">
+<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Qualityrequirement1.png" width="600"> -->
+
+![Quality Requirement 1](images/Qualityrequirement1.png)
+
 
 # Quality Scenarios and Risks
 
