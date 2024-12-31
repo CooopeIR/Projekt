@@ -1,4 +1,5 @@
-﻿const apiUrl = 'https://6rlt9htd51.execute-api.us-east-1.amazonaws.com';
+﻿// const apiUrl = 'https://6rlt9htd51.execute-api.us-east-1.amazonaws.com'; // Alte HTTP API
+const apiUrl = 'https://kd5ale9jnb.execute-api.us-east-1.amazonaws.com/prod';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Extract cityId from query parameters
@@ -29,17 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     searchBtn.addEventListener('click', function () {
-        let dateTime = document.getElementById('datetime-picker').value;
-
-        if (dateTime === 0)
-            showMessage("Date must be selected", false);
-        else {
-            fetchVideo(cityName);
-            clearBtn.style.display = "block";
-            setTimeout(() => {
-                clearBtn.classList.add("show"); // Add the class to trigger sliding effect
-            }, 40);
-        }
+        fetchVideo(cityName);
     });
 });
 
@@ -71,10 +62,23 @@ function showMessage(message, isSuccess) {
     }, 5000);
 }
 
-
 async function fetchVideo(city) {
     console.log('Fetching video...');
     fetchUrl = apiUrl + '/video' + `?city=${encodeURIComponent(city)}`;
+
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("hour-slider").value;
+
+    console.log(date);
+    console.log(time);
+
+    if (date === null || date == 0)
+        showMessage("Date must be selected", false);
+
+    const fetchOption = {
+        method: "POST",
+        body: JSON.stringify(dateTime)
+    };
 
     // Endpunkt mit dem Parameter "term" anstatt "query"
     fetch(fetchUrl)

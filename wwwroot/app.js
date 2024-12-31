@@ -1,4 +1,4 @@
-﻿const apiUrl = 'https://6rlt9htd51.execute-api.us-east-1.amazonaws.com';
+﻿const apiUrl = 'https://kd5ale9jnb.execute-api.us-east-1.amazonaws.com/prod';
 
 // Function to show a message for 5 seconds
 function showMessage(message, isSuccess) {
