@@ -2,3 +2,5 @@
 /.vscode
 /screenshots
 /lambdas
+/fetch-locations/node_modules
+/fetch-locations/package-lock.json
