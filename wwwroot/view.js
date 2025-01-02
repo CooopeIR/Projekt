@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     searchBtn.addEventListener('click', function () {
-        fetchVideo(cityName);
+        fetchCities(cityName);
     });
 });
 
@@ -61,7 +61,7 @@ function showMessage(message, isSuccess) {
     }, 5000);
 }
 
-async function fetchVideo(city) {
+async function fetchCities(city) {
     console.log('Fetching video...');
     fetchUrl = apiUrl + '/video' + `?city=${encodeURIComponent(city)}`;
 
