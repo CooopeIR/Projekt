@@ -1,5 +1,4 @@
-﻿// const apiUrl = 'https://6rlt9htd51.execute-api.us-east-1.amazonaws.com'; // Alte HTTP API
-const apiUrl = 'https://kd5ale9jnb.execute-api.us-east-1.amazonaws.com/prod';
+﻿const apiUrl = 'https://kd5ale9jnb.execute-api.us-east-1.amazonaws.com/prod';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Extract cityId from query parameters
