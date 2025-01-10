@@ -1,4 +1,4 @@
-# Introduction and Goals {#section-introduction-and-goals}
+# Introduction and Goals 
 
 This section introduces The Weather Archive and explains underlying goals and requirements, which we pursue in the development of the new Weather Archive web applicaiton. 
 
@@ -30,7 +30,7 @@ We aim to provide an application that is up to modern standards in visual as wel
 | F4 | Visual usability assistance | Our users should be guided through the use of our web app. Thus, we have to keep to UX standards and aid them by useful features along their visits. | 
 | F5 | Event-driven architecture | A lot of our backend processing can take place asynchronously, so we are able to reap the benefits of event-driven architectures. | 
 
-## Quality Goals {#_quality_goals}
+## Quality Goals
 The following table explains our three most important quality goals
 
 | Id | Quality Goal | Explanation |
@@ -39,7 +39,7 @@ The following table explains our three most important quality goals
 | QG2 | Reliability | Our system can handle a strongly varying number of traffic from across the globe. Errors within our system do not lead to total system outages, but rather only to outages of small system components. |
 | QG3 | Operability | The system can be understood, learned, used and is attractive to our users. |
 
-## Stakeholders {#_stakeholders}
+## Stakeholders
 There are plenty of stakeholders, which hold some special interest in our system. The following section lists our main stakeholders and puts there interests in relation.
 
 | Who | Interests |
@@ -52,7 +52,7 @@ There are plenty of stakeholders, which hold some special interest in our system
 | Meteorological Agencies | Want access to our data, in order to potentially use it for their own services. |
 
 
-# Architecture Constraints {#section-architecture-constraints}
+# Architecture Constraints
 In order to achieve our quality goals and fulfill requirements, there are certain aspects that limit our freedom. These architectural constraints a listed below.
 
 | Topic | Constraint |
@@ -66,22 +66,22 @@ In order to achieve our quality goals and fulfill requirements, there are certai
 | Data consistency | If we use caching mechanisms for performance benefits, we might suffer constraints regarding data consistency, so we have to take this into consideration. | 
 | Data Privacy | Occasionally, there will be people walking around in our camera footage. We might have to take additional measures in order to blur faces, license plates and more. Also we have to consider which data will eventually end up in the cloud, and which GDPR / HIIPA constraints we therefore need to consider. |
 
-# Context and Scope {#section-context-and-scope}
+# Context and Scope
 
 The main players of our system are the system itself, which has an interface to its users on the one hand, and an interface to the weather cams on the other hand. Weather cams also receive information from our telemtetric sensors, so that we can add metadata about air pressure and such to our files. Also, system administrators have a special interface to our system, as they need to have priviledged access.
 
-## Business Context {#_business_context}
+## Business Context
 The diagram shows the main interfaces between our system and outside actors, such as users, admins and our weather cams, which are physically distributed across Europe. 
 ![Business Context Diagram](images/Business%20Context.drawio.png)
 
-## Technical Context {#_technical_context}
+## Technical Context
 In terms of technical interfaces, there are plenty of interfaces within our system. Users and Webcams all require the API, in order to reach the sysems internal functionalities. Our microservices, serverless functions, as well as our databases will have an interface to our API and event system.
 ![Technical Context Diagram](images/Technical%20Context.png)
 
-# Solution Strategy {#section-solution-strategy}
+# Solution Strategy
 To fulfill the requirements and achieve the outlined quality goals, the following solution strategy will be implemented:
 
-### Architectural Solution Strategy
+## Architectural Solution Strategy
 The following solution strategies are applied in regards to our architectural challenges. 
 
 | Topic | Solution Strategy |
@@ -125,10 +125,10 @@ The following solution strategies are applied to challenges regarding maintainab
 | API-driven Design | The system will expose functionalities via RESTful APIs to support easy integration with external services and future extensions (F1, QG1). |
 | Modular Codebase | By adhering to best practices in modular software design, the system will allow developers to add or modify components with minimal disruption (QG1). |
 
-# Building Block View {#section-building-block-view}
+# Building Block View
 In this sectioon, we will give insights to layers of our syetem, each getting more and more detailed. 
 
-## Whitebox Overall System {#_whitebox_overall_system}
+## Whitebox Overall
 
 The following sdiagram shows the Top-Level View of our system. Further down, we will go into more detail on the lower level implementations of some building blocks. 
 
@@ -136,156 +136,16 @@ The following sdiagram shows the Top-Level View of our system. Further down, we 
 
 The reasons we decided to split our system that way are explained in the above sections. Driving considerations and goals are maintainability, extensibility as well as reliability. 
 
-### BB1: The Weather Archive  {#__name_black_box_1}
+### BB1: The Weather Archive
 
 ![Leve 1: The Weather Archive](images/Black%20Box%201.drawio.png)
 
 
-If you use tabular form you will only describe your black boxes with
-name and responsibility according to the following schema:
 
-+-----------------------+-----------------------------------------------+
-| **Black**              | **Responsibility**                            |
-+=======================+===============================================+
-| *\<black box 1>*      |  *\<Text>*                                    |
-+-----------------------+-----------------------------------------------+
-| *\<black box 2>*      |  *\<Text>*                                    |
-+-----------------------+-----------------------------------------------+
+# Runtime View
 
 
-
--   black box descriptions of the contained building blocks. For these
-    we offer you alternatives:
-
-    -   use *one* table for a short and pragmatic overview of all
-        contained building blocks and their interfaces
-
-    -   use a list of black box descriptions of the building blocks
-        according to the black box template (see below). Depending on
-        your choice of tool this list could be sub-chapters (in text
-        files), sub-pages (in a Wiki) or nested elements (in a modeling
-        tool).
-
--   (optional:) important interfaces, that are not explained in the
-    black box templates of a building block, but are very important for
-    understanding the white box. Since there are so many ways to specify
-    interfaces why do not provide a specific template for them. In the
-    worst case you have to specify and describe syntax, semantics,
-    protocols, error handling, restrictions, versions, qualities,
-    necessary compatibilities and many things more. In the best case you
-    will get away with examples or simple signatures.
-
-
-
-
-
-If you use a list of black box descriptions then you fill in a separate
-black box template for every important building block . Its headline is
-the name of the black box.
-
-### \<Name black box 1> {#__name_black_box_1}
-
-Here you describe \<black box 1> according the the following black box
-template:
-
--   Purpose/Responsibility
-
--   Interface(s), when they are not extracted as separate paragraphs.
-    This interfaces may include qualities and performance
-    characteristics.
-
--   (Optional) Quality-/Performance characteristics of the black box,
-    e.g.availability, run time behavior, ....
-
--   (Optional) directory/file location
-
--   (Optional) Fulfilled requirements (if you need traceability to
-    requirements).
-
--   (Optional) Open issues/problems/risks
-
-*\<Purpose/Responsibility>*
-
-*\<Interface(s)>*
-
-*\<(Optional) Quality/Performance Characteristics>*
-
-*\<(Optional) Directory/File Location>*
-
-*\<(Optional) Fulfilled Requirements>*
-
-*\<(optional) Open Issues/Problems/Risks>*
-
-### \<Name black box 2> {#__name_black_box_2}
-
-*\<black box template>*
-
-### \<Name black box n> {#__name_black_box_n}
-
-*\<black box template>*
-
-### \<Name interface 1> {#__name_interface_1}
-
-...
-
-### \<Name interface m> {#__name_interface_m}
-
-## Level 2 {#_level_2}
-
-Here you can specify the inner structure of (some) building blocks from
-level 1 as white boxes.
-
-You have to decide which building blocks of your system are important
-enough to justify such a detailed description. Please prefer relevance
-over completeness. Specify important, surprising, risky, complex or
-volatile building blocks. Leave out normal, simple, boring or
-standardized parts of your system
-
-### White Box *\<building block 1>* {#_white_box_emphasis_building_block_1_emphasis}
-
-...describes the internal structure of *building block 1*.
-
-*\<white box template>*
-
-### White Box *\<building block 2>* {#_white_box_emphasis_building_block_2_emphasis}
-
-*\<white box template>*
-
-...
-
-### White Box *\<building block m>* {#_white_box_emphasis_building_block_m_emphasis}
-
-*\<white box template>*
-
-## Level 3 {#_level_3}
-
-Here you can specify the inner structure of (some) building blocks from
-level 2 as white boxes.
-
-When you need more detailed levels of your architecture please copy this
-part of arc42 for additional levels.
-
-### White Box \<\_building block x.1\_\> {#_white_box_building_block_x_1}
-
-Specifies the internal structure of *building block x.1*.
-
-*\<white box template>*
-
-### White Box \<\_building block x.2\_\> {#_white_box_building_block_x_2}
-
-*\<white box template>*
-
-### White Box \<\_building block y.1\_\> {#_white_box_building_block_y_1}
-
-*\<white box template>*
-
-# Runtime View {#section-runtime-view}
-
-
-## Runtime Scenario 1: Real-Time Weather Data Processing {#__runtime_scenario_1}
-
-<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview1.png" width="600"> --> 
-<!-- Das wurde bei mir mit GuitHub Link nicht angezeigt irgendwie> -->
+## Runtime Scenario 1: Real-Time Weather Processing
 
 ![Runtime View 1](images/runtimeview1.png)
 
@@ -296,9 +156,8 @@ Preprocessed data is sent to the Data Storage Module.
 The Data Analysis Engine fetches new data and updates insights.
 External systems request insights via the API Gateway.
 
-## Runtime Scenario 2: Data Retrieval for Historical Analysis {#__runtime_scenario_2}
+## Runtime Scenario 2: Data Retrieval for Historical Analysis 
 
-<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview2.png" width="600"> -->
 
 ![Runtime View 2](images/runtimeview2.png)
 
@@ -311,9 +170,8 @@ Description:
 
 3. The requested data is formatted and sent to the external system.
 
-## Runtime Scenario 3: Predictive Analysis Execution {#__runtime_scenario_3}
+## Runtime Scenario 3: Predictive Analysis Execution 
 
-<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/runtimeview3.png" width="600"> -->
 ![Runtime View 3](images/runtimeview3.png)
 
 
@@ -324,7 +182,7 @@ Description:
 
 3. The API Gateway provides the predictions to external systems upon reques
 
-# Deployment View {#section-deployment-view}
+# Deployment View
 | Scenario | CAP* | Reasoning | Document Support| 
 |----------|----------|----------|----------|
 | Real-Time Data Ingestion    | CP   | Consistency: Immediate and accurate data updates are critical to prevent inaccuracies.   | "Ensure real-time updates to system," as per stakeholder feedback.|
@@ -335,9 +193,8 @@ Description:
 
 
 
-## Infrastructure Level 1 {#_infrastructure_level_1}
+## Infrastructure Level 1
 
-<!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Depolymentview1.png" width="800"> -->
 
 ![Deployment View](images/Depolymentview1.png)
 
@@ -388,9 +245,9 @@ Image Resizer Service: Resizes images to reduce storage costs and improve perfor
 Video Generator Service: Generates video from images stored in
 
 
-# Cross-cutting Concepts {#section-concepts}
+# Cross-cutting Concepts
 
-## Continuous Integration (CI) {#_ci}
+## Continuous Integration (CI)
 
 A development concept that cuts across various stages of the software development lifecycle.
 
@@ -400,7 +257,7 @@ A development concept that cuts across various stages of the software developmen
 
 - CI promotes collaboration, reduces integration problems, and contributes to the overall stability of the application.
 
-## Aspect-Oriented Programming (AOP) {#_aop}
+## Aspect-Oriented Programming (AOP)
 
 Addresses concerns, such as logging or security, which often span multiple modules or layers.
 
@@ -408,7 +265,7 @@ Addresses concerns, such as logging or security, which often span multiple modul
 
 - Promotes cleaner and more maintainable architecture.
 
-## Role-Based Access Control (RBAC) {#_rbac}
+## Role-Based Access Control (RBAC)
 
 Managing access permissions based on roles assigned to users within a system.
 
@@ -418,7 +275,7 @@ Managing access permissions based on roles assigned to users within a system.
 
 - Influences the design and implementation of security measures throughout the entire application, impacting various components and user interactions.
 
-## Event-Driven Architecture {#_event_driven}
+## Event-Driven Architecture
 
 An architecture pattern promoting loose coupling and asynchronous processing.
 
@@ -428,7 +285,7 @@ An architecture pattern promoting loose coupling and asynchronous processing.
 
 - Supports fault tolerance through retries and compensating actions for failed processes.
 
-## Monitoring and Logging {#_monitoring_logging}
+## Monitoring and Logging
 
 Ensures operational stability and simplifies debugging across the system.
 
@@ -436,7 +293,7 @@ Ensures operational stability and simplifies debugging across the system.
 
 - Centralized logging provides a single source of truth for troubleshooting and audit trails.
 
-## Data Privacy and Security {#_data_privacy}
+## Data Privacy and Security 
 
 Cross-cutting concerns affecting data handling and compliance.
 
@@ -446,7 +303,7 @@ Cross-cutting concerns affecting data handling and compliance.
 
 - Enforces API keys and token-based authentication for secure system access.
 
-## Disaster Recovery {#_disaster_recovery}
+## Disaster Recovery 
 Ensures business continuity and minimizes downtime during critical failures.
 
 - Defines automated backup policies for databases and storage systems.
@@ -455,7 +312,7 @@ Ensures business continuity and minimizes downtime during critical failures.
 
 - Implements multi-region replication for critical data to mitigate regional outages.
 
-## Responsive Design {#_responsive_design}
+## Responsive Design 
 
 A UX-focused concept ensuring compatibility across a variety of devices and screen sizes.
 
@@ -463,9 +320,9 @@ A UX-focused concept ensuring compatibility across a variety of devices and scre
 
 - Ensures the application remains functional and visually appealing across desktops, tablets, and mobile devices.
 
-# Architecture Decisions {#section-design-decisions}
+# Architecture Decisions 
 
-## Serverless Architecture for Compute-Intensive Tasks {#_serverless_architecture}
+## Serverless Architecture for Compute-Intensive Tasks 
 
 **Objective:** Optimize compute tasks for scalability, cost-efficiency, and fault tolerance.
 
@@ -495,7 +352,7 @@ A UX-focused concept ensuring compatibility across a variety of devices and scre
 
 **Consequence:** Requires careful management of state through external storage solutions such as S3 and DynamoDB.
 
-## Cloud Platform: AWS {#_aws_cloud}
+## Cloud Platform: AWS 
 
 **Objective:** Ensure a scalable, reliable, and globally distributed platform for the application.
 
@@ -523,7 +380,7 @@ A UX-focused concept ensuring compatibility across a variety of devices and scre
 
 **Consequence:** Development and operations must account for AWS-specific limitations and opportunities, such as egress costs and service quotas.
 
-## API Gateway for Communication {#_api_gateway}
+## API Gateway for Communication 
 
 **Objective:** Centralize external communication to simplify request routing and improve security.
 
@@ -549,7 +406,7 @@ A UX-focused concept ensuring compatibility across a variety of devices and scre
 
 **Consequence:** Efficient handling of high request volumes, but requires robust backend integration to ensure consistent performance.
 
-## Data Privacy Measures {#_data_privacy_measures}
+## Data Privacy Measures
 
 **Objective:** Ensure compliance with GDPR and other privacy regulations while maintaining data security.
 
@@ -577,62 +434,9 @@ A UX-focused concept ensuring compatibility across a variety of devices and scre
 
 **Consequence:** Additional computational overhead, but mitigates risks of non-compliance and enhances user trust.
 
-# Quality Requirements {#section-quality-scenarios}
+# Quality Requirements
 
-::: formalpara-title
-**Content**
-:::
-
-This section contains all quality requirements as quality tree with
-scenarios. The most important ones have already been described in
-section 1.2. (quality goals)
-
-Here you can also capture quality requirements with lesser priority,
-which will not create high risks when they are not fully achieved.
-
-::: formalpara-title
-**Motivation**
-:::
-
-Since quality requirements will have a lot of influence on architectural
-decisions you should know for every stakeholder what is really important
-to them, concrete and measurable.
-
-See [Quality Requirements](https://docs.arc42.org/section-10/) in the
-arc42 documentation.
-
-## Quality Tree {#_quality_tree}
-
-::: formalpara-title
-**Content**
-:::
-
-The quality tree (as defined in ATAM -- Architecture Tradeoff Analysis
-Method) with quality/evaluation scenarios as leafs.
-
-::: formalpara-title
-**Motivation**
-:::
-
-The tree structure with priorities provides an overview for a sometimes
-large number of quality requirements.
-
-::: formalpara-title
-**Form**
-:::
-
-The quality tree is a high-level overview of the quality goals and
-requirements:
-
--   tree-like refinement of the term \"quality\". Use \"quality\" or
-    \"usefulness\" as a root
-
--   a mind map with quality categories as main branches
-
-In any case the tree should include links to the scenarios of the
-following section.
-
-## Quality Scenarios {#_quality_scenarios}
+## Quality Scenarios
 
 <!-- <img src="https://github.com/CooopeIR/servl-weathercams/blob/master/arc42/images/Qualityrequirement1.png" width="600"> -->
 
@@ -641,7 +445,7 @@ following section.
 
 # Quality Scenarios and Risks
 
-### Data Security and Privacy {#data-security-and-privacy}
+### Data Security and Privacy
 
 | Goal            | Scenario                                           | Source              | Stimulus                        | Response                                                   |
 |-----------------|---------------------------------------------------|---------------------|---------------------------------|------------------------------------------------------------|
@@ -649,7 +453,7 @@ following section.
 | Integrity       | Prevent tampering with metadata or processed data.| Compliance Audit    | Detect metadata discrepancy     | Log changes, validate the database, and initiate recovery. |
 | Authenticity    | Enforce multi-factor authentication for logins.   | Security Requirements | Unauthorized login attempt     | Block access and prompt the user for verification.         |
 
-### Usability {#usability}
+### Usability
 
 | Goal            | Scenario                                              | Source              | Stimulus                         | Response                                                   |
 |-----------------|------------------------------------------------------|---------------------|----------------------------------|------------------------------------------------------------|
@@ -657,7 +461,7 @@ following section.
 | Accessibility   | Visually impaired users navigate the application.     | Accessibility Testing | Screen reader compatibility issues | Update UI to meet WCAG compliance standards.               |
 | Error Prevention| Prevent user errors during form submissions.          | User Analytics      | User enters invalid data         | Display validation messages and prevent form submission.   |
 
-### Reliability {#reliability}
+### Reliability
 
 | Goal            | Scenario                                              | Source              | Stimulus                         | Response                                                   |
 |-----------------|------------------------------------------------------|---------------------|----------------------------------|------------------------------------------------------------|
@@ -665,7 +469,7 @@ following section.
 | Fault Tolerance | System reroutes traffic during server failures.       | System Health Checks | Server failure detected         | Redirect traffic to backup regions and log the incident.   |
 | Recoverability  | Restore operations after an outage while preserving data integrity. | Disaster Recovery Testing | Simulated outage             | Execute recovery processes and validate data integrity.    |
 
-### Performance {#performance}
+### Performance
 
 | Goal            | Scenario                                              | Source              | Stimulus                         | Response                                                   |
 |-----------------|------------------------------------------------------|---------------------|----------------------------------|------------------------------------------------------------|
@@ -675,7 +479,7 @@ following section.
 
 ---
 
-# Risks and Technical Debts {#section-technical-risks}
+# Risks and Technical Debts
 
 | Risk                                   | Impact              | Mitigation Strategy                                                  |
 |---------------------------------------|---------------------|----------------------------------------------------------------------|
@@ -687,7 +491,7 @@ following section.
 
 ---
 
-# Glossary {#section-glossary}
+# Glossary
 
 | Term                   | Definition                                                                                                            |
 |-----------------------|---------------------------------------------------------------------------------------------------------------------|
